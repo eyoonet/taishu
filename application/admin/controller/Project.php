@@ -28,6 +28,7 @@ class Project extends AdminBase{
     
     public function edit($id){
         $data=model('Project')->get($id);
+        $this->assign('pay',$data->getData('pay'));
         $this->assign('data',$data);
         if ($this->request->isPost()){
              $data->project = input('post.project');

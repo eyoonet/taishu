@@ -10,14 +10,23 @@ namespace app\admin\model;
 use think\Model;
 class Pay  extends Model 
 {
+    protected $auto = ['total'];
+    protected $autoWriteTimestamp = true;
+    // 定义时间戳字段名
+    protected $createTime = 'create_time';
+    protected $updateTime = FALSE;
+
     /**
-     * 注册一个新用户
-     * @param  string $username 用户名
-     * @param  string $password 用户密码
-     * @param  string $email    用户邮箱
-     * @param  string $mobile   用户手机号码
-     * @return integer          注册成功-用户信息，注册失败-错误编号
+     * 总价统计
+     * @param unknown $value
+     * @param unknown $data
      */
-    
+    protected function setTotalAttr($value,$data){
+        return $value = $data['number'] * $data['price'];
+    }
+     
+    protected function getCreatetimeAttr($value){
+        return  date("Y-m-d H:i",$value);
+    }   
     
 }

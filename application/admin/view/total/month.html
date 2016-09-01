@@ -28,11 +28,19 @@
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
 		        <tr>
+		        <th colspan='{$count+1}' >收入明细</th>
+		        <th colspan='8'>支出明细</th>
+		        </tr>
+		        
+		        <tr>
 		            <td>楼名</tdh>
                     {volist name="projectnames" id ="value"}
 		            <td>{$value}</td>
 		            {/volist} 
-		            
+                    {volist name="payprojectnames" id ="value"}
+		            <td>{$value}</td>
+		            {/volist} 
+		          
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -42,6 +50,9 @@
 		            {volist name="value.num" id = "vo"}
 		            <td>{$vo}</td>
 		            {/volist}         
+		            <td>占位项目</td>
+		            <td>占位项目</td>
+		            <td>占位项目</td>
 		            
 		        </tr>
 		       {/volist}      
@@ -50,6 +61,10 @@
 			        {volist name ="hjs" id = "value"}
 			        <td>{$value}</td>
 			        {/volist}
+			        <td>占位项目</td>
+			        <td>占位项目</td>
+			        <td>占位项目</td>
+			      
 			    </tr>
 		    </tbody>
 	  </table>

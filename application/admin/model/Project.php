@@ -18,6 +18,9 @@ class Project  extends Model
      * @param  string $mobile   用户手机号码
      * @return integer          注册成功-用户信息，注册失败-错误编号
      */
-    
+    protected function getPayAttr($value){
+        $data=['支出','收入'];
+        return $data[$value];
+    }
     
 }

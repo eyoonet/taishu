@@ -13,6 +13,7 @@
 		    <thead>
 		        <tr>
 		            <th>项目名称</th>
+		            <th>所属</th>
 		            <th>单价</th>
 		            <th>数量</th>
 		            <th>操作</th>
@@ -22,6 +23,7 @@
 		       {volist name="data" id ="value"}
 		        <tr class="">
 		            <td>{$value.project}</td>
+		            <td>{$value.pay}</td>
 		            <td>{$value.price}</td>
 		            <td>{$value.number}</td>
 		            <td>

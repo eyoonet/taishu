@@ -103,7 +103,7 @@ class Room extends AdminBase
      */
     public function show($fid=null){
         $list = $this->roomModel->all(['fid'=>$fid]);
-        
+        $this->assign('fid',$fid);
         $this->assign('list',$list);
         return $this->fetch();        
     }

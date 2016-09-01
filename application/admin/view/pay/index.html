@@ -12,27 +12,37 @@
 		    
 		    <thead>
 		        <tr>
-		            <th>项目名称</th>
+		            <th>日期</th>
+		            <th>名称</th>
 		            <th>单价</th>
 		            <th>数量</th>
+		            <th>总价</th>
 		            <th>操作</th>
 		        </tr>
 		    </thead>
 		    <tbody id='project'>
-		       {volist name="data" id ="value"}
+		       {volist name="datas" id ="value"}
 		        <tr class="">
+		            <td>{$value.create_time}</td>
 		            <td>{$value.project}</td>
 		            <td>{$value.price}</td>
 		            <td>{$value.number}</td>
+		            <td>{$value.total}</td>
 		            <td>
-                      <a href="{:url('/admin/project/edit')}?id={$value.id}">编辑</a> | 
-                      <a href="{:url('/admin/project/del')}?id={$value.id}">删除</a>
+                      <a href="{:url('/admin/pay/edit')}?id={$value.id}">编辑</a> | 
+                      <a href="{:url('/admin/pay/del')}?id={$value.id}">删除</a>
 		           </td>		            
 		        </tr>
 		       {/volist}      
 		    </tbody>
 	  </table>
 	</div>
+      <div class="am-cf jsdel">
+  
+        <div class="am-fr">
+            {$datas->render()}
+        </div>
+      </div>	
 </div>
 {/block}
 {block name="script"}

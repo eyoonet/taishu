@@ -21,6 +21,15 @@
 			                  数量:
 			        <input value='{$data.number}' name='number'  type="text" placeholder="默认数量">
 			        <br>	    
+				    所属分类:
+				    <div class="am-form-group">
+				      <label class="am-radio-inline">
+				        <input type="radio"  value="1" name="pay" {if $pay==1}checked{/if}>  收入
+				      </label>
+				      <label class="am-radio-inline">
+				        <input type="radio" value = '0' name="pay" {if $pay==0}checked{/if}> 支出
+				      </label>
+				    </div>			        
 			        <button type="submit" class="am-btn am-btn-primary am-btn-block">修 改</button>
 			    </form>
 			  </div>
