@@ -1,0 +1,65 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>账单列表</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    
+				      <div class="am-btn-toolbar">
+					      <div class="am-btn-group am-btn-group-xs">
+							     <input id = "startdate" value="开始日期" type="button" class="am-btn am-btn-default am-btn-xs" placeholder="起始日期" data-am-datepicker readonly required />
+							     <input id = "enddate" value="结束日期" type="button" class="am-btn am-btn-default am-btn-xs" placeholder="结束日期" data-am-datepicker readonly required />
+					             <button  class="am-btn am-btn-default" type="radio">未缴费</button>
+		       			       <button onclick="search()"  class="am-btn am-btn-default" type="button">搜索</button>
+					       </div>
+				      </div>
+	  </div>
+
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>账单日期</th>
+		            <th>缴费时间</th>
+		            <th>操作</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		      {volist name='data' id='value'}
+		        <tr class="">
+		            <td><a href="{:url('admin/room/showtable')}?fid={$fid}&rid={$rid}&pid={$value.id}">{$value.create_time}</a></td>
+		            <td>{if $value.ispay==0}未缴费{else}{$value.pay_date}{/if}</td>	            
+		            <td>
+					      <div class="am-btn-group am-btn-group-xs">
+					           <a href="{:url('admin/room/pay')}?pid={$value.id}">缴费</a> | 
+		       			       <a href="{:url('admin/room/pdel')}?pid={$value.id}&fid={$fid}&rid={$rid}">删除</a>
+					       </div>		            
+		            </td>
+		        </tr>
+		      {/volist}
+		    </tbody>
+	  </table>
+
+	</div>		    
+       
+       
+      <div class="am-cf jsdel">
+  
+        <div class="am-fr">
+            {$data->render()}
+        </div>
+      </div>
+
+
+
+
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

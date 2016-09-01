@@ -1,0 +1,116 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>数据统计</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<form method="get" action="">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    
+	    <div class="am-g doc-am-g">
+           <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
+                <h3 class="am-panel-title">月统计({$mdate})</h3>
+           </div>
+           <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
+				<div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm', viewMode: 'years', minViewMode: 'months'}">
+				  <input name='mdate' type="text" class="am-form-field" placeholder="选择月" readonly>
+				  <span class="am-input-group-btn am-datepicker-add-on">
+				    <button class="am-btn am-btn-default" type="button"><span class="am-icon-calendar"></span> </button>
+				  </span>
+				</div>	
+           </div>
+        </div>
+
+	  </div>
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>楼名</th>
+		            <th>水</th>
+		            <th>电</th>
+		            <th>房租</th>
+		            <th>其他</th>
+		            <th>总计</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {php} $tot=0; {/php}
+		       {volist name="data" id ="value"}
+		        <tr class="">
+		            <td>{$value.floor_name}</td>
+		            <td>${$value.m.shui_total}</td>
+		            <td>${$value.m.dian_total}</td>
+		            <td>${$value.m.fz_total}</td>
+		            <td>${$value.m.other_total}</td> 
+		            <td>${$value.m.total}</td>            
+		        </tr>
+		       {php}$tot+=$value['m']['total']; {/php}
+		       {/volist}      
+			    <tr>
+			        <th>月度汇总</th>
+			        <td colspan='5'>{$tot}</td>
+			    </tr>
+		    </tbody>
+	  </table>
+	</div>
+
+
+
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+		<div class="am-g doc-am-g">
+		  <div class="am-u-sm-6 am-u-md-4 am-u-lg-4">
+		     <h3 class="am-panel-title">年统计({$ydate})</h3>
+		  </div>
+		  <div class="am-u-sm-6 am-u-md-8 am-u-lg-4">
+		     <input name='ydate' type="text" class="am-form-field" data-am-datepicker="{format: 'yyyy ', viewMode: 'years', minViewMode: 'years'}" placeholder="选择年" data-am-datepicker readonly/>
+		  </div>
+		</div>	    
+	  </div>
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>楼名</th>
+		            <th>水</th>
+		            <th>电</th>
+		            <th>房租</th>
+		            <th>其他</th>
+		            <th>总计</th>
+		            
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {php} $tot=0; {/php}
+		       {volist name="data" id ="value"}
+		        <tr class="">
+		            <td>{$value.floor_name}</td>
+		            <td>${$value.y.shui_total}</td>
+		            <td>${$value.y.dian_total}</td>
+		            <td>${$value.y.fz_total}</td>
+		            <td>${$value.y.other_total}</td> 
+		            <td>${$value.y.total}</td>        
+		        </tr>
+		       {php}$tot+=$value['y']['total']; {/php}
+		       {/volist} 
+			    <tr>
+			        <th>年度汇总</th>
+			        <td colspan='5'>{$tot}</td>
+			    </tr>		            
+		    </tbody>
+	  </table>
+	</div>
+<button type="submit" class="am-btn am-btn-primary am-fr">查 询</button>
+</form>
+</div>
+{/block}
+{block name="script"}
+<script>
+$(function() {
+
+	
+});      
+</script>
+{/block}

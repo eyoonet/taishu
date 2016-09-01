@@ -1,0 +1,37 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>添加房间</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default">
+	  <div class="am-panel-hd">添加房间</div>
+	  <div class="am-panel-bd">
+			<div class="am-g">
+			  <div class="am-u-md-4">
+			    <form  class="am-form" method="post" >
+			        <input name='room_name' type="text" placeholder="填写房名">
+			        <br>
+			        <input name='shui_number'  type="text" placeholder="水费读数">
+			        <br>
+			        <input name='dian_number'  type="text" placeholder="电费读数">
+			        <br>
+			        <input name='price' type="text" placeholder="房价">
+			        <br>	    
+                    <input name='equipment' type="text" placeholder="设备">
+			        <br>
+			        <button type="submit" class="am-btn am-btn-primary am-btn-block">添加</button>
+			    </form>
+			  </div>
+			</div>
+	  </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

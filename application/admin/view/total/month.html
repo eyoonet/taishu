@@ -1,0 +1,68 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>数据统计</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<form method="get" action="">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    
+	    <div class="am-g doc-am-g">
+           <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
+                <h3 class="am-panel-title">月统计({$mdate})</h3>
+           </div>
+           <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
+				<div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm', viewMode: 'years', minViewMode: 'months'}">
+				  <input name='mdate' type="text" class="am-form-field" placeholder="选择月" readonly>
+				  <span class="am-input-group-btn am-datepicker-add-on">
+				    <button class="am-btn am-btn-default" type="button"><span class="am-icon-calendar"></span> </button>
+				  </span>
+				</div>	
+           </div>
+        </div>
+
+	  </div>
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <td>楼名</tdh>
+                    {volist name="projectnames" id ="value"}
+		            <td>{$value}</td>
+		            {/volist} 
+		            
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {volist name="fdatas" id ="value"}
+		        <tr class="">
+		            <td>{$value.floor_name}</td>
+		            {volist name="value.num" id = "vo"}
+		            <td>{$vo}</td>
+		            {/volist}         
+		            
+		        </tr>
+		       {/volist}      
+			    <tr>
+			        <th>月度汇总</th>
+			        {volist name ="hjs" id = "value"}
+			        <td>{$value}</td>
+			        {/volist}
+			    </tr>
+		    </tbody>
+	  </table>
+	</div>
+<button type="submit" class="am-btn am-btn-primary am-fr">查 询</button>
+</form>
+</div>
+{/block}
+{block name="script"}
+<script>
+$(function() {
+
+	
+});      
+</script>
+{/block}

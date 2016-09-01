@@ -1,0 +1,36 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>添加默认项目</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+    <a href="{:url('/admin/project/add')}" class="am-btn am-btn-primary am-btn-xs">返 回</a>
+	<div class="am-panel am-panel-default">
+	  <div class="am-panel-bd">
+			<div class="am-g">
+			  <div class="am-u-md-4">
+			    <form  class="am-form" method="post" >
+			                  项目名称:
+			        <input name='project' type="text" placeholder="填写项目名称">
+			        <br>
+			                  单价:
+			        <input name='price'  type="text" placeholder="默认单价">
+			        <br>
+			                  数量:
+			        <input name='number'  type="text" placeholder="默认数量">
+			        <br>	    
+			        <button type="submit" class="am-btn am-btn-primary am-btn-block">添加</button>
+			    </form>
+			  </div>
+			</div>
+	  </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

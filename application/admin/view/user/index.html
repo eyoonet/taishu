@@ -1,0 +1,44 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>用户列表</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    <h3 class="am-panel-title">用户列表</h3>
+	  </div>
+
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>用户名</th>
+		            <th>昵称</th>
+		            <th>创建时间</th>
+		            <th>操作</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {volist name="data" id ="value"}
+		        <tr class="">
+		            <td>{$value.user}</td>
+		            <td>{$value.name}</td>
+		            <td>{$value.create_time}</td>
+		            <td>
+                      <a href="{:url('/admin/user/edit')}?id={$value.id}">编辑</a> | 
+                      <a href="{:url('/admin/user/del')}?id={$value.id}">删除</a>
+		           </td>		            
+		        </tr>
+		       {/volist}      
+		    </tbody>
+	  </table>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

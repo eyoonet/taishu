@@ -1,0 +1,43 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>编辑楼</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default">
+	  <div class="am-panel-hd">编辑楼</div>
+	  <div class="am-panel-bd">
+			<div class="am-g">
+			  <div class="am-u-md-4">
+			    <form  class="am-form" method="post" >
+			        <input value='{$data.floor_name}' name='floor_name' type="text" placeholder="填写楼名">
+			        <br>
+			        <input value='{$data.shui_price}' name='shui_price'  type="text" placeholder="水费单价">
+			        <br>
+			        <input value='{$data.dian_price}' name='dian_price'  type="text" placeholder="电费单价">
+			        <br>
+			        <input value='{$data.address}' name='address' type="text" placeholder="地址">
+			        <br>	    
+				    <select name='user'  class="">
+				      {volist name='users' id='value'}
+				      <option value="{$value.user}">{$value.user}</option>
+				      {/volist}
+				    </select>
+			        <br>
+			        <input value='{$data.tel}' type="text" placeholder="电话">    
+			        <br>
+			        <button type="submit" class="am-btn am-btn-primary am-btn-block">修改</button>
+			    </form>
+			  </div>
+			</div>
+	  </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

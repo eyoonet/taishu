@@ -1,0 +1,57 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>楼列表</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    <h3 class="am-panel-title">楼列表</h3>
+	  </div>
+
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>楼名</th>
+		            <th>水单价</th>
+		            <th>电单价</th>
+		            <th>用户帐号</th>
+		            <th>电话</th>
+		            <th>地址</th>
+		            <th>管理</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {volist name="list" id ="value"}
+		        <tr class="">
+		            <td>{$value.floor_name}</td>
+		            <td>{$value.shui_price}</td>
+		            <td>{$value.dian_price}</td>
+		            <td>{$value.user}</td>
+		            <td>{$value.tel}</td>
+		            <td>{$value.address}</td>
+		            <td>
+		             <div class="am-dropdown" data-am-dropdown>
+	                  <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+	                  <ul class="am-dropdown-content">
+                        <li><a href="{:url('admin/room/add')}?id={$value.id}">1. 添加房间</a></li>
+                        <li><a href="{:url('/admin/room')}?fid={$value.id}">2. 查看房间</a></li>
+	                    <li><a href="{:url('admin/floor/edit')}?id={$value.id}">3. 编辑</a></li>
+	                    <li><a href="{:url('admin/floor/del')}?id={$value.id}">4. 删除</a></li>
+	                  </ul>
+                    </div>
+		           </td>		            
+		        </tr>
+		       {/volist}      
+		    </tbody>
+	  </table>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

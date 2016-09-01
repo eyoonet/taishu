@@ -1,0 +1,43 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>支出默认项目设置</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<a href="{:url('/admin/project/add')}" class="am-btn am-btn-primary am-btn-xs">添 加</a>
+	<div class="am-panel am-panel-default am-table">
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    
+		    <thead>
+		        <tr>
+		            <th>项目名称</th>
+		            <th>单价</th>
+		            <th>数量</th>
+		            <th>操作</th>
+		        </tr>
+		    </thead>
+		    <tbody id='project'>
+		       {volist name="data" id ="value"}
+		        <tr class="">
+		            <td>{$value.project}</td>
+		            <td>{$value.price}</td>
+		            <td>{$value.number}</td>
+		            <td>
+                      <a href="{:url('/admin/project/edit')}?id={$value.id}">编辑</a> | 
+                      <a href="{:url('/admin/project/del')}?id={$value.id}">删除</a>
+		           </td>		            
+		        </tr>
+		       {/volist}      
+		    </tbody>
+	  </table>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+
+    
+</script>
+{/block}

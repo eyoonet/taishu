@@ -1,0 +1,40 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>添加用户</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default">
+	  <div class="am-panel-hd">添加用户</div>
+	  <div class="am-panel-bd">
+			<div class="am-g">
+			  <div class="am-u-md-4">
+			    <form  class="am-form" method="post" >
+			                  用户名:
+			        <input name='user' type="text" placeholder="填写用户名">
+			        <br>
+			                  昵称:(例:张三)
+			        <input name='name'  type="text" placeholder="用户昵称">
+			        <br>
+			                  密码:
+			        <input name='password'  type="password" placeholder="用户密码">
+			        <br>
+			                 确认密码:
+			        <input name='enter_passowrd' type="password" placeholder="确认密码">
+			        <br>	    
+
+			        <button type="submit" class="am-btn am-btn-primary am-btn-block">添加</button>
+			    </form>
+			  </div>
+			</div>
+	  </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

@@ -1,0 +1,78 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>创建订单</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">      
+	<form action="" method="post">
+	<div class="am-panel am-panel-default am-table">
+	    <div class="am-panel-hd">水电只需要输入现有读数程序自动计算 --本房上次读数 -- 水:: {$rdata.shui_number} -- 电:: {$rdata.dian_number}</div>
+             <table class="am-table  am-table-striped am-table-hover">
+			   <thead>
+				  <tr>
+				    <th>项目名称</th><th>单价</th><th>数量</th>
+				  </tr>
+			   </thead>	           
+	           <tbody id='project'> 
+                  {volist name='projects' id = 'project'}
+                  <tr>
+                     <td> 
+                       <button class='am-icon-close am-btn-sm'></button> 
+                       <input name='project[]' value={$project.project} type="text" class="am-input-sm">                                
+                     </td>
+                     <td> <input name='price[]' value='{$project.price}' type="text" class="am-input-sm"></td>
+                     <td> <input name='number[]'  value='{$project.number}' type="text" class="am-input-sm"></td>
+                  </tr>
+                  {/volist}                                                                           
+			  </tbody>
+			</table>	        
+	</div>           
+	<button type="button" id='addproj' class="am-btn am-btn-primary am-btn-xs">添加一项</button>
+	<button type="submit" class="am-btn am-btn-primary am-btn-xs">保存</button>
+    </form>
+{/block}
+{block name="script"}
+<script type="text/javascript">	
+	/************************
+	* 用jquery方法的绑定侦听和销毁来解决动态div的增加删除：
+	*************************/
+    $(document).ready(function(){
+	   bindListener();
+	})
+	
+	/************************
+	* 添加表格项目 
+	*************************/
+	$("#addproj").click(function(){
+		var str=    " <tr>";
+	         str+=       "<td><button class='am-icon-close am-btn-sm'></button> <input name='project[]'  type='text' class='am-input-sm'></td>";
+	         str+=       "<td> <input  name='price[]'  type='text' class='am-input-sm'></td>";
+	         str+=       "<td> <input  name='number[]'  type='text' class='am-input-sm'></td>";
+	         str+=   "</tr> ";
+		$("#project").append(str);
+		 // 为新元素节点添加事件侦听器
+	    bindListener();		
+	});
+	
+	/************************
+	* 删除表格项目
+	************************/
+	$('.am-icon-close').click(function(){
+		//alert('d');
+		$(this).parent().parent().remove();
+	});
+	/************************
+	// 用来绑定事件(使用unbind避免重复绑定)
+	************************/
+	function bindListener(){
+	 $(".am-icon-close").unbind().click(function(){
+	  $(this).parent().parent().remove();
+	    })
+	}
+	
+
+	
+</script>
+{/block}

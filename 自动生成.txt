@@ -1,0 +1,30 @@
+如果你不习惯命令行操作，也可以直接调用\think\Build类的方法进行自动生成，例如：
+
+// 定义应用目录
+define('APP_PATH', __DIR__ . '/../application/');
+// 加载框架引导文件
+require __DIR__ . '/../thinkphp/start.php';
+// 读取自动生成定义文件
+$build = include 'build.php';
+// 运行自动生成
+\think\Build::run($build);
+run方法第二个参数用于指定要生成的应用类库的命名空间，默认是app，第三个参数是设置是否需要使用类后缀。
+例如：
+
+// 定义应用目录
+define('APP_PATH', __DIR__ . '/../application/');
+// 加载框架引导文件
+require __DIR__ . '/../thinkphp/start.php';
+// 读取自动生成定义文件
+$build = include 'build.php';
+// 运行自动生成
+\think\Build::run($build,'application',true);
+可以不依赖自动生成文件，直接使用默认目录生成模块，例如：
+
+// 定义应用目录
+define('APP_PATH', __DIR__ . '/../application/');
+// 加载框架引导文件
+require __DIR__ . '/../thinkphp/start.php';
+// 自动生成admin模块
+\think\Build::module('admin');
+module方法第二个参数和第三个参数的用法和run方法一样。

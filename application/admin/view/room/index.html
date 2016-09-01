@@ -1,0 +1,55 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">后台管理</strong> / <small>房间列表</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    <h3 class="am-panel-title">房间列表</h3>
+	  </div>
+
+	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
+		    <thead>
+		        <tr>
+		            <th>房名</th>
+		            <th>水读数</th>
+		            <th>电读数</th>
+		            <th>房租</th>
+		            <th>设备</th>
+		            <th>管理</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		       {volist name="list" id ="value"}
+		        <tr class="">
+		            <td>{$value.room_name}</td>
+		            <td>{$value.shui_number}</td>
+		            <td>{$value.dian_number}</td>
+		            <td>{$value.price}</td>
+		            <td>{$value.equipment}</td>
+		            <td>
+		             <div class="am-dropdown" data-am-dropdown>
+	                  <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+	                  <ul class="am-dropdown-content">
+	                    <li><a href="{:url('admin/room/edit')}?id={$value.id}">1. 编辑</a></li>
+	                    <li><a href="{:url('admin/room/del')}?id={$value.id}">2. 删除</a></li>
+	                  </ul>
+                    </div>
+		           </td>		            
+		        </tr>
+		       {/volist}
+		       	        
+		    </tbody>
+	  </table>
+
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

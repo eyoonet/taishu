@@ -1,0 +1,32 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>房客入住</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default">
+	  <div class="am-panel-hd">添加房间</div>
+	  <div class="am-panel-bd">
+			<div class="am-g">
+			  <div class="am-u-md-4">
+			    <form  class="am-form" method="post" >
+			        <input name='guest_name' type="text" placeholder="房客姓名">
+			        <br>
+			        <input name='guest_tel'  type="text" placeholder="电话">
+			        <br>
+			        
+			        <button type="submit" class="am-btn am-btn-primary am-btn-block">入住</button>
+			    </form>
+			  </div>
+			</div>
+	  </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

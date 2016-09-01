@@ -1,0 +1,40 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>房列表</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div class="am-panel am-panel-default am-table">
+	  <div class="am-panel-hd">
+	    <h3 class="am-panel-title">红色未出租,黑色已出租</h3>
+	  </div>
+      <div class="am-btn-toolbar">
+        <div class="am-btn-group am-btn-group-xs">
+         {foreach $list as $key=>$value} 
+         <div class="am-dropdown" data-am-dropdown>
+             {if $value.status == 0}
+             <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle am-text-danger" data-am-dropdown-toggle> <span class="am-icon-home am-icon-lg"></span>{$value.room_name}&nbsp&nbsp</button>
+             {else}
+             <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle " data-am-dropdown-toggle> <span class="am-icon-home am-icon-lg"></span>{$value.room_name}&nbsp&nbsp</button>
+             {/if}
+             <ul class="am-dropdown-content">
+               <li><a href="{:url('admin/room/createtab')}?rid={$value.id}&fid={$value.fid}">1. 制单</a></li>
+               <li><a href="{:url('admin/room/findtable')}?rid={$value.id}&fid={$value.fid}">2. 查看</a></li>
+               <li><a href="{:url('admin/room/gusetreg')}?rid={$value.id}&fid={$value.fid}">4. 入住</a></li>
+               <li><a href="{:url('admin/room/gusetdel')}?rid={$value.id}&fid={$value.fid}">5. 退房</a></li>
+             
+             </ul>
+         </div>     
+         {/foreach}
+        </div>
+      </div>
+	</div>
+</div>
+{/block}
+{block name="script"}
+<script>
+      
+</script>
+{/block}

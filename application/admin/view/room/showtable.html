@@ -1,0 +1,83 @@
+{extend name="layout" /}
+{block name="title"}
+	  <div class="am-cf am-padding">
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>显示表格</small></div>
+      </div>
+{/block}
+{block name="content"}
+<div class="am-container">
+	<div id='form1'>
+	<table  width='710' style="border-collapse:collapse;margin-bottom:20px;" border="1pt" bordercolor="#000000" class="">
+	  <caption><h2>曦樂軒物业管理收款收据</h2></caption>
+	  <tr>
+	    <td colspan='4' style="padding:0px 0px 0px 4px;">
+	      <span class="am-margin-right ">{$fname} - {$rname}</span>
+	      <span class="am-margin-right ">房客 : {$uname}</span>
+	      <span class="am-margin-right ">凭证编号 : {$pid}</span>
+	    </td>
+	  </tr>
+	  <tr class="showTable">
+	    <th style="text-align: left;padding-left:4px;"> 项目</th>
+	    <th style="text-align:center;">数量</th>
+	    <th style="text-align:center;">单价</th>
+	    <th style="text-align:center;">价格</th>
+	  </tr>
+	    {php}$total = 0;{/php}
+	    {volist name='lists' id = 'list'}
+	  <tr class="showTable">
+	    <td style="text-align:left;padding-left:4px;"> {$list.project}</td>
+	    <td style="text-align:center;">{$list.number}</td>
+	    <td style="text-align:center;">${$list.price}</td>
+	    <td style="text-align:center;">${$list.total}</td>
+	  </tr>
+        {php}
+          if($list['project']=='水费'){
+             $shui_new_number = $list['new_number'];
+             $shui_old_number = $list['old_number'];
+          }else if($list['project']=='电费'){
+             $dian_new_number = $list['new_number'];
+             $dian_old_number = $list['old_number'];
+          }
+          $total+=$list['total'];
+        {/php}
+	  {/volist}
+	  <tr>
+	     <th style="padding-left:4px;" colspan='2'>总计大写 : {:minToMax($total)}</th>
+	     <th style="padding-left:4px;" colspan='2'>总计小写 : $ {$total}</th>
+	  </tr>
+	  <tr>
+	    <td colspan="4">
+	       <span style="padding-left:4px;" class="am-margin-right ">制表日期 : {$list['create_time']}</span>    
+	       <span class="am-margin-right ">操作人 : {$Think.session.user->name} </span>
+	       <span class="am-margin-right ">水读数 : {if (isset($shui_old_number))}{$shui_old_number}{/if} - 
+	                   {if (isset($shui_new_number))}{$shui_new_number}{/if} 
+	       </span>           
+	       <span class="am-margin-right ">电读数 : {if (isset($dian_old_number))}{$dian_old_number}{/if} - 
+	                    {if (isset($dian_new_number))}{$dian_new_number}{/if}
+	       </span>             
+	    </td>
+	  </tr>
+	  <tr>
+	     <td style="padding-left:4px;" colspan='4'>
+		     <span class="am-fl am-margin-right">
+		                   备注 : 管理费当月收取,水电费收取上月,如有疑问咨询 : 27127551 
+		     </span>
+	     </td>
+	  </tr>
+	</table>
+    </div>	
+    <button onclick="return PrintTable(form1)" class="am-btn am-btn-primary am-btn-xs">打    印</button>
+</div>
+{/block}
+{block name="script"}
+<script>
+function PrintTable(Id){
+    var mStr;
+    mStr = window.document.body.innerHTML ;
+    var mWindow = window;               
+    window.document.body.innerHTML =Id.innerHTML;
+	mWindow.print();
+	window.document.body.innerHTML = mStr;  
+	}     
+</script>
+{/block}
