@@ -27,20 +27,18 @@
 	  </div>
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
-		        <tr>
-		        <th colspan='{$count+1}' >收入明细</th>
-		        <th colspan='8'>支出明细</th>
-		        </tr>
-		        
+			    <tr>
+		         <th colspan='{$count+1}' >收入明细</th>
+		         <th colspan='{$countpay+1}'>支出明细</th>
+		        </tr>	      
 		        <tr>
 		            <td>楼名</tdh>
                     {volist name="projectnames" id ="value"}
 		            <td>{$value}</td>
 		            {/volist} 
-		            <td>占位项目</td>
-		            <td>占位项目</td>
-		            <td>占位项目</td>
-		          
+                    {volist name="payprojectnames" id ="value"}
+		            <td>{$value}</td>
+		            {/volist} 
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -50,21 +48,23 @@
 		            {volist name="value.num" id = "vo"}
 		            <td>{$vo}</td>
 		            {/volist}         
-		            <td>占位项目</td>
-		            <td>占位项目</td>
-		            <td>占位项目</td>
-		            
+		            {volist name="value.paynum" id = "vo"}
+		            <td>{$vo}</td>
+		            {/volist}  
 		        </tr>
 		       {/volist}      
 			    <tr>
-			        <th>月度汇总</th>
+			        <th>汇总</th>
 			        {volist name ="hjs" id = "value"}
 			        <td>{$value}</td>
 			        {/volist}
-			        <td>占位项目</td>
-			        <td>占位项目</td>
-			        <td>占位项目</td>
-			      
+			        {volist name ="payhjs" id = "value"}
+			        <td>{$value}</td>
+			        {/volist}			        
+			    </tr>
+			    <tr>
+			       <th colspan='{$count+$countpay+1}' >结余：
+			           {$hjs[$count-1]} - {$payhjs[$countpay-1]} = {$hjs[$count-1] - $payhjs[$countpay-1]}</th>
 			    </tr>
 		    </tbody>
 	  </table>

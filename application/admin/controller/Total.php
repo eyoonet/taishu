@@ -30,53 +30,47 @@ class Total extends AdminBase{
             $fdatas=db('Floor')->where(['user'=>session('user')->user])->select();
         }
         //取地址修改
-        $projectTotal = 0;  $j = 0;
-        $count = \think\Db::query("select count(1) as count from think_project WHERE pay=1");
-        $count = $count[0]["count"] + 2;
-        for ($i = 0; $i < $count; $i++) {
+        //$count = \think\Db::query("select count(1) as count from think_project WHERE pay=1");
+        //$count = $count[0]["count"] + 2;
             foreach ($fdatas as $key=>&$vo){
-                //月
-                if ($j==0){//取消外层循环的重复读取数据库,保存在临时数组$totalSave中
-                    
-                    $total       =  $this->total($yStat, $yEnd, $vo['id']);
-                    $totalSave[] =  $total;
-                    
-                    $paytotal    =  $this->payTotal($yStat, $yEnd, $vo['id']);
-                    $paytotalSave[]=$paytotal;
-               
-                }else {
-                    $total =$totalSave[$key];
-                  
-                    $paytotal= $paytotalSave[$key];
-                }
-        
+                $total       =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Data',1);
+                $paytotal    =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Pay',0);
                 $fdatas[$key]['num']         =  $total['num'];
-              
                 $fdatas[$key]['paynum']         =  $paytotal['num'];
-                // $fdatas[$key]['projectname'] = $total['projectname'];
-                $projectTotal       +=  $vo['num'][$j];
             }
-            //dump($totalSave);exit;
-            $projectnames = $total['projectname'];
-            
-            $payprojectnames=$paytotal['projectname'];
-           
-            $hjs[]    = $projectTotal;
-            
-            
-            
-            $j++;
-            $projectTotal=0;
-        }
-        dump($payprojectnames);
-        dump($fdatas);exit;
-        $this->assign('count',$count);
-        $this->assign('projectnames',$projectnames);
-        $this->assign('payprojectnames',$payprojectnames);
-        $this->assign('hjs',$hjs);
-        $this->assign('fdatas',$fdatas);
+        $projectnames    = $total['projectname'];
+        $payprojectnames = $paytotal['projectname'];
+        $count           = sizeof($fdatas[0]['num']);
+        $countpay        = sizeof($fdatas[0]['paynum']);
+        $this->assign('count',           $count);
+        $this->assign('countpay',        $countpay);
+        $this->assign('projectnames',    $projectnames);
+        $this->assign('payprojectnames', $payprojectnames);
+        $this->assign('hjs',             $this->getfAllTotal($fdatas,'num'));
+        $this->assign('payhjs',          $this->getfAllTotal($fdatas,'paynum'));
+        $this->assign('fdatas',          $fdatas);
         return $this->fetch();
     }
+    /**
+     *      获取SUM总计
+     * @param annay   $fdata  房数据
+     * @param string  $field  获取的字段
+     * @return annay    返回序列 相加组合
+     */
+    protected function getfAllTotal($fdata,$field){
+        $sum = 0;
+        for ($j=0;$j<sizeof($fdata[0][$field]) ;$j++){
+            for ($i=0; $i<sizeof($fdata) ;$i++){
+              $sum+= $fdata[$i][$field][$j];
+            }
+            $alls[]=$sum;
+            $sum = 0;
+        }
+        return $alls;
+    }
+    
+    
+    
     
     /**
      * 月统计
@@ -96,34 +90,24 @@ class Total extends AdminBase{
         }
         
         //取地址修改
-        $projectTotal = 0;  $j = 0; 
-        $count = \think\Db::query("select count(1) as count from think_project WHERE pay=1");
-        $count = $count[0]["count"] + 2;
-        for ($i = 0; $i < $count; $i++) {
             foreach ($fdatas as $key=>&$vo){
-                //月
-                if ($j==0){//取消外层循环的重复读取数据库,保存在临时数组$totalSave中
-                    $total       =  $this->total($mStat, $mEnd, $vo['id']);
-                    $totalSave[] = $total;
-                }else {
-                    $total =$totalSave[$key];
-                }
+                $total       =  $this->getSumNumbers($mStat, $mEnd, $vo['id'],'Data',1);
+                $paytotal    =  $this->getSumNumbers($mStat, $mEnd, $vo['id'],'Pay',0);
                 $fdatas[$key]['num']         =  $total['num'];
-               // $fdatas[$key]['projectname'] = $total['projectname'];
-                $projectTotal       +=  $vo['num'][$j];               
-            }         
-            $projectnames = $total['projectname'];
-            $hjs[] = $projectTotal;
-            $j++;
-            $projectTotal=0;
-        }
-        //dump($fdatas);;
-       // dump($projectnames);exit;
-        $this->assign('count',$count);
-        $this->assign('projectnames',$projectnames);
-        $this->assign('hjs',$hjs);
-        $this->assign('fdatas',$fdatas);
-        return $this->fetch();    
+                $fdatas[$key]['paynum']         =  $paytotal['num'];
+            }
+        $projectnames    = $total['projectname'];
+        $payprojectnames = $paytotal['projectname'];
+        $count           = sizeof($fdatas[0]['num']);
+        $countpay        = sizeof($fdatas[0]['paynum']);
+        $this->assign('count',           $count);
+        $this->assign('countpay',        $countpay);
+        $this->assign('projectnames',    $projectnames);
+        $this->assign('payprojectnames', $payprojectnames);
+        $this->assign('hjs',             $this->getfAllTotal($fdatas,'num'));
+        $this->assign('payhjs',          $this->getfAllTotal($fdatas,'paynum'));
+        $this->assign('fdatas',          $fdatas);
+        return $this->fetch();  
     }
     
     /**
@@ -132,12 +116,12 @@ class Total extends AdminBase{
      * @param unknown $dateEnd   结束时间
      * @param unknown $fid       房ID
      */
-    private function total($dateStart,$dateEnd,$fid,$pay=1){
+    private function getSumNumbers($dateStart,$dateEnd,$fid,$table,$pay=1){
         $projects = model('Project')->all(['pay'=>$pay]);
         $total= null;
         foreach ($projects as $project){
             //同项目相加集合
-            $sum = db('Data')->where('fid',$fid)->where('project',"$project->project")
+            $sum = db($table)->where('fid',$fid)->where('project',"$project->project")
                              ->where("create_time >= ".strtotime($dateStart))
                              ->where("create_time <= ".strtotime($dateEnd))->sum('total');
             $projectname[]  =  $project->project;
@@ -150,7 +134,7 @@ class Total extends AdminBase{
             $sql.="project !='".$name."' and ";
         }
         $where = rtrim($sql," and ");
-        $other = db('Data')->where('fid',$fid)->where($where)
+        $other = db($table)->where('fid',$fid)->where($where)
                              ->where("create_time >= ".strtotime($dateStart))
                              ->where("create_time <= ".strtotime($dateEnd))->sum('total');
         $totals[]      = $other;
@@ -163,36 +147,4 @@ class Total extends AdminBase{
         //dump($retotals);exit;
         return $retotals;
     }    
-    
-    private function payTotal($dateStart,$dateEnd,$fid,$pay=0){
-        $projects = model('Project')->all(['pay'=>$pay]);
-        $total= null;
-        foreach ($projects as $project){
-            //同项目相加集合
-            $sum = db('Pay')->where('fid',$fid)->where('project',"$project->project")
-            ->where("create_time >= ".strtotime($dateStart))
-            ->where("create_time <= ".strtotime($dateEnd))->sum('total');
-            $projectname[]  =  $project->project;
-            $totals[]       =  $sum;
-            //所有项目相加
-            $total         +=  $sum;
-        }
-        $sql = null;
-        foreach ($projectname as $name){
-            $sql.="project !='".$name."' and ";
-        }
-        $where = rtrim($sql," and ");
-        $other = db('Pay')->where('fid',$fid)->where($where)
-        ->where("create_time >= ".strtotime($dateStart))
-        ->where("create_time <= ".strtotime($dateEnd))->sum('total');
-        $totals[]      = $other;
-        $totals[]      = $total + $other;//其他为计算到总计里面在这里加上
-        $projectname[] = '其他';
-        $projectname[] = '总计';
-        $retotals['projectname']   =  $projectname;
-        $retotals['num']           =  $totals;
-        // $retotals['total']         =  $total + $other;//其他为计算到总计里面在这里加上
-        //dump($retotals);exit;
-        return $retotals;
-    }
 }
