@@ -21,7 +21,7 @@ class Index extends Controller
             $users      = $userModel->login($user, $password);
             if($users){
                 session('user',$users);
-                return redirect(url('/admin/total'));
+                return redirect(url('/admin/main'));
             }else {
                 session('user', null);
                 $this->error($userModel->getError(),url('index'));
