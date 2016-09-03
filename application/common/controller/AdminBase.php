@@ -34,8 +34,11 @@ class AdminBase extends Controller{
         $controller = $this->request->controller();
         $action = $this->request->action();
         $activeRouter = '/'.$module.'/'.$controller.'/'.$action;
-        if ($parent=model('Menu')->get(['url'=>$activeRouter]))
+        if ($parent=model('Menu')->get(['url'=>$activeRouter])){
             session('menuPid1',$parent->pid);
+        }else {
+            //session('menuPid1',0);
+        }
         if ($parent2=model('Menu')->get(['title'=>'用户楼管理']))
             session('menuPid2',$parent2->id);
         //运行子类初始化
