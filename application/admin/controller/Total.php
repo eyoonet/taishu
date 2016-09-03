@@ -32,12 +32,12 @@ class Total extends AdminBase{
         //取地址修改
         //$count = \think\Db::query("select count(1) as count from think_project WHERE pay=1");
         //$count = $count[0]["count"] + 2;
-            foreach ($fdatas as $key=>&$vo){
-                $total       =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Data',1);
-                $paytotal    =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Pay',0);
-                $fdatas[$key]['num']         =  $total['num'];
-                $fdatas[$key]['paynum']         =  $paytotal['num'];
-            }
+        foreach ($fdatas as $key=>&$vo){
+            $total       =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Data',1);
+            $paytotal    =  $this->getSumNumbers($yStat, $yEnd, $vo['id'],'Pay',0);
+            $fdatas[$key]['num']         =  $total['num'];
+            $fdatas[$key]['paynum']         =  $paytotal['num'];
+        }
         $projectnames    = $total['projectname'];
         $payprojectnames = $paytotal['projectname'];
         $count           = sizeof($fdatas[0]['num']);
@@ -143,8 +143,6 @@ class Total extends AdminBase{
         $projectname[] = '总计';
         $retotals['projectname']   =  $projectname;
         $retotals['num']           =  $totals;
-       // $retotals['total']         =  $total + $other;//其他为计算到总计里面在这里加上
-        //dump($retotals);exit;
         return $retotals;
     }    
 }

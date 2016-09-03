@@ -102,7 +102,9 @@ class Room extends AdminBase
      * @return mixed
      */
     public function show($fid=null){
-        $list = $this->roomModel->all(['fid'=>$fid]);
+        $list  = $this->roomModel->all(['fid'=>$fid]);
+        $fname = model('Floor')->where('id',$fid)->value('floor_name');
+        $this->assign('fname',$fname);
         $this->assign('fid',$fid);
         $this->assign('list',$list);
         return $this->fetch();        

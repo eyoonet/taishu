@@ -1,7 +1,7 @@
 {extend name="layout" /}
 {block name="title"}
 	  <div class="am-cf am-padding">
-         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>房列表</small></div>
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>{$fname}</small></div>
       </div>
 {/block}
 {block name="content"}
@@ -25,7 +25,6 @@
                <li><a href="{:url('admin/room/findtable')}?rid={$value.id}&fid={$value.fid}">2. 查看</a></li>
                <li><a href="{:url('admin/room/gusetreg')}?rid={$value.id}&fid={$value.fid}">4. 入住</a></li>
                <li><a href="{:url('admin/room/gusetdel')}?rid={$value.id}&fid={$value.fid}">5. 退房</a></li>
-             
              </ul>
          </div>     
          {/foreach}
@@ -33,6 +32,7 @@
       </div>
 	</div>
 <a href="{:url('/admin/pay/add')}?fid={$fid}" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-plus"></span> 添 加 支 出</a> 	
+<a href="{:url('/admin/pay/index')}?fid={$fid}" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-plus"></span> 查 看 支 出</a> 	
 </div>
 {/block}
 {block name="script"}

@@ -40,9 +40,11 @@ class Pay extends AdminBase
         }
         return $this->fetch();
     }    
-    public function index()
+    public function index($fid=NULL)
     {
-        $datas = model('Pay')->where(true)->paginate();
+        $datas = $fid==null ? model('Pay')->paginate(10) 
+                            : model('Pay')->where('fid',$fid)
+                                          ->paginate(10);
         $this->assign('datas',$datas);
         return $this->fetch();
     }
