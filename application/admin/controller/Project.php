@@ -20,6 +20,9 @@ class Project extends AdminBase{
     }
     public function add(){
         if ($this->request->isPost()){
+            $result = $this->validate(input('post.'),'Project');
+            if(true !== $result)
+                $this->error($result);
             if (model('Project')->save(input('post.')))
               return $this->success('添加成功');
         }
