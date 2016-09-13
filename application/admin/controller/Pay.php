@@ -20,6 +20,8 @@ class Pay extends AdminBase
      */
     public function add($fid) {
         $projects = model('Project')->all(['pay'=>0]);
+        $fname = model('Floor')->where('id',$fid)->value('floor_name');
+        $this->assign('fname',$fname);
         $this->assign('projects',$projects);
         if (request()->isPost()){
             $datas = input('post.');
@@ -42,6 +44,8 @@ class Pay extends AdminBase
     }    
     public function index($fid=NULL)
     {
+        $fname = model('Floor')->where('id',$fid)->value('floor_name');
+        $this->assign('fname',$fname);
         $datas = $fid==null ? model('Pay')->paginate(10) 
                             : model('Pay')->where('fid',$fid)
                                           ->paginate(10);

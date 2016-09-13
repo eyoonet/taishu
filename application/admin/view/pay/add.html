@@ -1,7 +1,7 @@
 {extend name="layout" /}
 {block name="title"}
 	  <div class="am-cf am-padding">
-         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>支出添加</small></div>
+         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户楼管理</strong> / <small>{$fname} / 添加支出</small></div>
       </div>
 {/block}
 {block name="content"}
@@ -9,7 +9,7 @@
 	<form action="" method="post">
 	<div class="am-panel am-panel-default am-table">
 	    <div class="am-panel-hd"></div>
-             <table class="am-table  am-table-striped am-table-hover">
+             <table id="mm" onkeydown="keyDown(event)"  class="am-table  am-table-striped am-table-hover">
 			   <thead>
 				  <tr>
 				    <th>项目名称</th><th>单价</th><th>数量</th>
@@ -72,7 +72,33 @@
 	    })
 	}
 	
-
+	var inputs=document.getElementById("mm").getElementsByTagName("INPUT"); 
+	function keyDown(event) 
+	{ 
+	 var focus=document.activeElement; 
+	 if(!document.getElementById("mm").contains(focus)) return; 
+	 var event=window.event||event;
+	 var key=event.keyCode; 
+	 for(var i=0; i<inputs.length; i++) 
+	 { 
+	  if(inputs[i]===focus) break; 
+	 } 
+	 switch(key) 
+	 { 
+	  case 37: 
+	   if(i>0) inputs[i-1].focus(); 
+	   break; 
+	  case 38: 
+	   if(i-3>=0) inputs[i-3].focus(); 
+	   break; 
+	  case 39: 
+	   if(i<inputs.length-1) inputs[i+1].focus(); 
+	   break; 
+	  case 40: 
+	   if(i+3 <inputs.length) inputs[i+3].focus(); 
+	   break; 
+	 } 
+	} 
 	
 </script>
 {/block}
