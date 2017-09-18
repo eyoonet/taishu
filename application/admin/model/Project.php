@@ -22,5 +22,13 @@ class Project  extends Model
         $data=['支出','收入'];
         return $data[$value];
     }
+/*     protected function getPriceAttr($value,$data){
+       dump($data);
+        if ($data['project']=='电费'){
+            return "888888";
+        }
+        return $data['price'];
+    } */
+    
     
 }

@@ -6,11 +6,9 @@
 {/block}
 {block name="content"}
 <div class="am-container">
+	<button onclick=javascript:history.back(-1); class="am-btn am-btn-primary am-btn-xs" >返回上一页</button>
 	<div class="am-panel am-panel-default am-table">
-	  <div class="am-panel-hd">
-	    <h3 class="am-panel-title">房间列表</h3>
-	  </div>
-
+      
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
 		        <tr>
@@ -18,7 +16,8 @@
 		            <th>水读数</th>
 		            <th>电读数</th>
 		            <th>房租</th>
-		            <th>设备</th>
+					<th>排序</th>
+					<th>设备</th>
 		            <th>管理</th>
 		        </tr>
 		    </thead>
@@ -29,8 +28,9 @@
 		            <td>{$value.shui_number}</td>
 		            <td>{$value.dian_number}</td>
 		            <td>{$value.price}</td>
-		            <td>{$value.equipment}</td>
-		            <td>
+					<td>{$value.reg_date}</td>
+					<td>{$value.equipment}</td>
+		             <td>
 		             <div class="am-dropdown" data-am-dropdown>
 	                  <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
 	                  <ul class="am-dropdown-content">

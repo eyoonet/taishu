@@ -22,8 +22,22 @@
                        <button class='am-icon-close am-btn-sm'></button> 
                        <input name='project[]' value={$project.project} type="text" class="am-input-sm">                                
                      </td>
-                     <td> <input name='price[]' value='{$project.price}' type="text" class="am-input-sm"></td>
-                     <td> <input name='number[]'  value='{$project.number}' type="text" class="am-input-sm"></td>
+                     <td> 
+                        {switch name="project.project" }
+                         {case value="水费"}<input name='price[]' value='{$fdata.shui_price}' type="text" class="am-input-sm">{/case}
+                         {case value="电费"}<input name='price[]' value='{$fdata.dian_price}' type="text" class="am-input-sm">{/case}
+                         {case value="房租"}<input name='price[]' value='{$rdata.price}' type="text" class="am-input-sm">{/case}
+						 {default /}<input name='price[]' value='{$project.price}' type="text" class="am-input-sm">
+                        {/switch}
+                        
+                     </td>
+                     <td>
+						 {switch name="project.project" }
+						 {case value="管理费"}<input name='number[]' value='{$fdata.gl_number}' type="text" class="am-input-sm">{/case}
+						 {case value="公共维修基金"}<input name='number[]' value='{$fdata.gg_number}' type="text" class="am-input-sm">{/case}
+						 {default /}<input name='number[]'  value='{$project.number}' type="text" class="am-input-sm">
+						 {/switch}
+					 </td>
                   </tr>
                   {/volist}                                                                           
 			  </tbody>

@@ -7,9 +7,7 @@
 {block name="content"}
 <div class="am-container">
 	<div class="am-panel am-panel-default am-table">
-	  <div class="am-panel-hd">
-	    <h3 class="am-panel-title">楼列表</h3>
-	  </div>
+
 
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
@@ -26,7 +24,7 @@
 		    <tbody>
 		       {volist name="list" id ="value"}
 		        <tr class="">
-		            <td>{$value.floor_name}</td>
+		            <td><a href="{:url('/admin/room')}?fid={$value.id}">{$value.floor_name}</a></td>
 		            <td>{$value.shui_price}</td>
 		            <td>{$value.dian_price}</td>
 		            <td>{$value.user}</td>

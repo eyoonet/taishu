@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:71:"D:\phpStudy\WWW\taishu\public/../application/admin\view\room\index.html";i:1472719816;s:67:"D:\phpStudy\WWW\taishu\public/../application/admin\view\layout.html";i:1472719816;s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\head.html";i:1472719816;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\header.html";i:1472719816;s:75:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\sidebar.html";i:1472719816;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\script.html";i:1472719816;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:71:"D:\phpStudy\WWW\taishu\public/../application/admin\view\room\index.html";i:1474208436;s:67:"D:\phpStudy\WWW\taishu\public/../application/admin\view\layout.html";i:1471187102;s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\head.html";i:1470056120;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\header.html";i:1471187268;s:75:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\sidebar.html";i:1471187533;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\script.html";i:1470057792;}*/ ?>
 <!doctype html>
 <html class="no-js fixed-layout">
 <head>
@@ -96,11 +96,9 @@
 
       
 <div class="am-container">
+	<button onclick=javascript:history.back(-1); class="am-btn am-btn-primary am-btn-xs" >返回上一页</button>
 	<div class="am-panel am-panel-default am-table">
-	  <div class="am-panel-hd">
-	    <h3 class="am-panel-title">房间列表</h3>
-	  </div>
-
+      
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
 		        <tr>

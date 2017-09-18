@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\floor\index.html";i:1472719816;s:67:"D:\phpStudy\WWW\taishu\public/../application/admin\view\layout.html";i:1472719816;s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\head.html";i:1472719816;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\header.html";i:1472719816;s:75:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\sidebar.html";i:1472719816;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\script.html";i:1472719816;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\floor\index.html";i:1474207474;s:67:"D:\phpStudy\WWW\taishu\public/../application/admin\view\layout.html";i:1471187102;s:72:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\head.html";i:1470056120;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\header.html";i:1471187268;s:75:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\sidebar.html";i:1471187533;s:74:"D:\phpStudy\WWW\taishu\public/../application/admin\view\public\script.html";i:1470057792;}*/ ?>
 <!doctype html>
 <html class="no-js fixed-layout">
 <head>
@@ -97,9 +97,7 @@
       
 <div class="am-container">
 	<div class="am-panel am-panel-default am-table">
-	  <div class="am-panel-hd">
-	    <h3 class="am-panel-title">楼列表</h3>
-	  </div>
+
 
 	  <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-compact">
 		    <thead>
@@ -116,7 +114,7 @@
 		    <tbody>
 		       <?php if(is_array($list) || $list instanceof \think\Collection): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$value): $mod = ($i % 2 );++$i;?>
 		        <tr class="">
-		            <td><?php echo $value['floor_name']; ?></td>
+		            <td><a href="<?php echo url('/admin/room'); ?>?fid=<?php echo $value['id']; ?>"><?php echo $value['floor_name']; ?></a></td>
 		            <td><?php echo $value['shui_price']; ?></td>
 		            <td><?php echo $value['dian_price']; ?></td>
 		            <td><?php echo $value['user']; ?></td>

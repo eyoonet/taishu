@@ -85,7 +85,7 @@ class Floor extends AdminBase
                //添加菜单到用户   关联了Menu表.  Menu表赋值
                $dataInput['title']     = $dataInput['floor_name'];
                $dataInput['menu_user'] = $dataInput['user'];
-               $dataInput['pid']       = 16;
+               $dataInput['pid']       = 3;
                $dataInput['url']       = '/admin/room/show';
                $dataInput['id']        = $id;
                if ($this->floorModel->isUpdate(true)->save($dataInput))

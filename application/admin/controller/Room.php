@@ -102,7 +102,7 @@ class Room extends AdminBase
      * @return mixed
      */
     public function show($fid=null){
-        $list  = $this->roomModel->all(['fid'=>$fid]);
+        $list  = $this->roomModel->where(['fid'=>$fid])->order('reg_date', 'asc')->select();
         $fname = model('Floor')->where('id',$fid)->value('floor_name');
         $this->assign('fname',$fname);
         $this->assign('fid',$fid);
@@ -116,10 +116,12 @@ class Room extends AdminBase
      */
     public function createtab($rid,$fid) {
         $rdata = model('Room')->get($rid);
+        $fdata = model('Floor')->get($fid);
         if($rdata['status'] == 0 )
             return $this->success('此房间未入住');
         $projects = model('Project')->all(['pay'=>1]);
-        $this->assign('rdata',$rdata);
+        $this->assign('rdata',$rdata);//dump($rdata);exit;
+        $this->assign('fdata',$fdata);//dump($rdata);exit;
         $this->assign('projects',$projects);
         if (request()->isPost()){
             $datas = input('post.');

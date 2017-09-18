@@ -25,22 +25,39 @@
 	  </tr>
 	    {php}$total = 0;{/php}
 	    {volist name='lists' id = 'list'}
-	  <tr class="showTable">
-	    <td style="text-align:left;padding-left:4px;"> {$list.project}</td>
-	    <td style="text-align:center;">{$list.number}</td>
-	    <td style="text-align:center;">${$list.price}</td>
-	    <td style="text-align:center;">${$list.total}</td>
-	  </tr>
-        {php}
-          if($list['project']=='水费'){
-             $shui_new_number = $list['new_number'];
-             $shui_old_number = $list['old_number'];
-          }else if($list['project']=='电费'){
-             $dian_new_number = $list['new_number'];
-             $dian_old_number = $list['old_number'];
-          }
-          $total+=$list['total'];
-        {/php}
+			{php}
+				if($list['project']=='水费'){
+				$shui_new_number = $list['new_number'];
+				$shui_old_number = $list['old_number'];
+				}else if($list['project']=='电费'){
+				$dian_new_number = $list['new_number'];
+				$dian_old_number = $list['old_number'];
+				}
+				$total+=$list['total'];
+			{/php}
+		<tr class="showTable">
+			{switch name="list.project" }
+
+				{case value="水费"}
+					<td style="text-align:left;padding-left:4px;"> {$list.project}(
+						{if (isset($shui_old_number))}{$shui_old_number}{/if} -
+						{if (isset($shui_new_number))}{$shui_new_number}{/if})
+					</td>
+				{/case}
+
+				{case value="电费"}
+					<td style="text-align:left;padding-left:4px;"> {$list.project}(
+						{if (isset($dian_old_number))}{$dian_old_number}{/if} -
+						{if (isset($dian_new_number))}{$dian_new_number}{/if})
+					</td>
+				{/case}
+				{default /}<td style="text-align:left;padding-left:4px;"> {$list.project}</td>
+			{/switch}
+			<td style="text-align:center;">{$list.number}</td>
+			<td style="text-align:center;">${$list.price}</td>
+			<td style="text-align:center;">${$list.total}</td>
+	    </tr>
+
 	  {/volist}
 	  <tr>
 	     <th style="padding-left:4px;" colspan='2'>总计大写 : {:minToMax($total)}</th>

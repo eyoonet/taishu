@@ -6,7 +6,8 @@
 {/block}
 {block name="content"}
 <div class="am-container">
-    <a href="{:url('/admin/project/add')}" class="am-btn am-btn-primary am-btn-xs">返 回</a>
+    
+    <button onclick=javascript:history.back(-1); class="am-btn am-btn-primary am-btn-xs" >返回上一页</button>
 	<div class="am-panel am-panel-default">
 	  <div class="am-panel-bd">
 			<div class="am-g">
@@ -21,7 +22,7 @@
 			                  数量:
 			        <input name='number'  type="text" placeholder="默认数量">
 			        <br>	    
-				    所属分类:
+				       所属分类:
 				    <div class="am-form-group">
 				      <label class="am-radio-inline">
 				        <input type="radio"  value="1" name="pay"> 收入
