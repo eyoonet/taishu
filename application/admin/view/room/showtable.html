@@ -7,7 +7,7 @@
 {block name="content"}
 <div class="am-container">
 	<div id='form1'>
-	<table  width='710' style="border-collapse:collapse;margin-bottom:20px;" border="1pt" bordercolor="#000000" class="">
+	<table id="table" width='100%' style="border-collapse:collapse;margin-bottom:20px;" border="1pt" bordercolor="#000000" class="">
 	  <caption><h2>曦樂軒物业管理收款收据</h2></caption>
 	  <tr>
 	    <td colspan='4' style="padding:0px 0px 0px 4px;">
@@ -90,7 +90,8 @@
 {block name="script"}
 <script>
 function PrintTable(Id){
-    var mStr;
+    $('#table').width(710);
+	var mStr;
     mStr = window.document.body.innerHTML ;
     var mWindow = window;               
     window.document.body.innerHTML =Id.innerHTML;

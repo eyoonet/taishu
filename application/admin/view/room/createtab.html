@@ -9,33 +9,33 @@
 	<form action="" method="post">
 	<div class="am-panel am-panel-default am-table">
 	    <div class="am-panel-hd">水电只需要输入现有读数程序自动计算 --本房上次读数 -- 水:: {$rdata.shui_number} -- 电:: {$rdata.dian_number}</div>
-             <table id="mm" onkeydown="keyDown(event)" class="am-table  am-table-striped am-table-hover">
+             <table width="100%" id="mm" onkeydown="keyDown(event)" class="am-table  am-table-striped am-table-hover">
 			   <thead>
 				  <tr>
-				    <th>项目名称</th><th>单价</th><th>数量</th>
+				    <th style="width:50%" >项目名称</th><th style="width:25%">单价</th><th style="width:25%">数量</th>
 				  </tr>
 			   </thead>	           
 	           <tbody id='project'> 
                   {volist name='projects' id = 'project'}
                   <tr>
-                     <td> 
-                       <button class='am-icon-close am-btn-sm'></button> 
-                       <input name='project[]' value={$project.project} type="text" class="am-input-sm">                                
+                     <td>
+						 <button style="width:30px" class='am-icon-close am-btn-sm'></button>
+						 <input style="width:70%" name='project[]' value={$project.project} type="text" class="am-input-sm">
                      </td>
                      <td> 
                         {switch name="project.project" }
-                         {case value="水费"}<input name='price[]' value='{$fdata.shui_price}' type="text" class="am-input-sm">{/case}
-                         {case value="电费"}<input name='price[]' value='{$fdata.dian_price}' type="text" class="am-input-sm">{/case}
-                         {case value="房租"}<input name='price[]' value='{$rdata.price}' type="text" class="am-input-sm">{/case}
-						 {default /}<input name='price[]' value='{$project.price}' type="text" class="am-input-sm">
+                         {case value="水费"}<input style="width:100%" name='price[]' value='{$fdata.shui_price}' type="text" class="am-input-sm">{/case}
+                         {case value="电费"}<input style="width:100%" name='price[]' value='{$fdata.dian_price}' type="text" class="am-input-sm">{/case}
+                         {case value="房租"}<input style="width:100%" name='price[]' value='{$rdata.price}' type="text" class="am-input-sm">{/case}
+						 {default /}<input style="width:100%" name='price[]' value='{$project.price}' type="text" class="am-input-sm">
                         {/switch}
                         
                      </td>
                      <td>
 						 {switch name="project.project" }
-						 {case value="管理费"}<input name='number[]' value='{$fdata.gl_number}' type="text" class="am-input-sm">{/case}
-						 {case value="公共维修基金"}<input name='number[]' value='{$fdata.gg_number}' type="text" class="am-input-sm">{/case}
-						 {default /}<input name='number[]'  value='{$project.number}' type="text" class="am-input-sm">
+						 {case value="管理费"}<input style="width:100%" name='number[]' value='{$fdata.gl_number}' type="text" class="am-input-sm">{/case}
+						 {case value="公共维修基金"}<input style="width:100%" name='number[]' value='{$fdata.gg_number}' type="text" class="am-input-sm">{/case}
+						 {default /}<input style="width:100%" name='number[]'  value='{$project.number}' type="text" class="am-input-sm">
 						 {/switch}
 					 </td>
                   </tr>
@@ -61,9 +61,9 @@
 	*************************/
 	$("#addproj").click(function(){
 		var str=    " <tr>";
-	         str+=       "<td><button class='am-icon-close am-btn-sm'></button> <input name='project[]'  type='text' class='am-input-sm'></td>";
-	         str+=       "<td> <input  name='price[]'  type='text' class='am-input-sm'></td>";
-	         str+=       "<td> <input  name='number[]'  type='text' class='am-input-sm'></td>";
+	         str+=       "<td><button style='width:30px' class='am-icon-close am-btn-sm'></button> <input style='width:70%' name='project[]'  type='text' class='am-input-sm'></td>";
+	         str+=       "<td> <input  style='width:100%'  name='price[]'  type='text' class='am-input-sm'></td>";
+	         str+=       "<td> <input  style='width:100%'  name='number[]'  type='text' class='am-input-sm'></td>";
 	         str+=   "</tr> ";
 		$("#project").append(str);
 		 // 为新元素节点添加事件侦听器
