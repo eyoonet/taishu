@@ -1,53 +1,53 @@
-project  Ó¦ÓÃ²¿ÊðÄ¿Â¼
-©À©¤application           Ó¦ÓÃÄ¿Â¼£¨¿ÉÉèÖÃ£©
-©¦  ©À©¤common             ¹«¹²Ä£¿éÄ¿Â¼£¨¿É¸ü¸Ä£©
-©¦  ©À©¤index              Ä£¿éÄ¿Â¼(¿É¸ü¸Ä)
-©¦  ©¦  ©À©¤config.php      Ä£¿éÅäÖÃÎÄ¼þ
-©¦  ©¦  ©À©¤common.php      Ä£¿éº¯ÊýÎÄ¼þ
-©¦  ©¦  ©À©¤controller      ¿ØÖÆÆ÷Ä¿Â¼
-©¦  ©¦  ©À©¤model           Ä£ÐÍÄ¿Â¼
-©¦  ©¦  ©À©¤view            ÊÓÍ¼Ä¿Â¼
-©¦  ©¦  ©¸©¤ ...            ¸ü¶àÀà¿âÄ¿Â¼
-©¦  ©À©¤command.php        ÃüÁîÐÐ¹¤¾ßÅäÖÃÎÄ¼þ
-©¦  ©À©¤common.php         Ó¦ÓÃ¹«¹²£¨º¯Êý£©ÎÄ¼þ
-©¦  ©À©¤config.php         Ó¦ÓÃ£¨¹«¹²£©ÅäÖÃÎÄ¼þ
-©¦  ©À©¤database.php       Êý¾Ý¿âÅäÖÃÎÄ¼þ
-©¦  ©¸©¤route.php          Â·ÓÉÅäÖÃÎÄ¼þ
-©À©¤extend                À©Õ¹Àà¿âÄ¿Â¼£¨¿É¶¨Òå£©
-©À©¤public                WEB ²¿ÊðÄ¿Â¼£¨¶ÔÍâ·ÃÎÊÄ¿Â¼£©
-©¦  ©À©¤static             ¾²Ì¬×ÊÔ´´æ·ÅÄ¿Â¼(css,js,image)
-©¦  ©À©¤index.php          Ó¦ÓÃÈë¿ÚÎÄ¼þ
-©¦  ©À©¤router.php         ¿ìËÙ²âÊÔÎÄ¼þ
-©¦  ©¸©¤.htaccess          ÓÃÓÚ apache µÄÖØÐ´
-©À©¤runtime               Ó¦ÓÃµÄÔËÐÐÊ±Ä¿Â¼£¨¿ÉÐ´£¬¿ÉÉèÖÃ£©
-©À©¤vendor                µÚÈý·½Àà¿âÄ¿Â¼£¨Composer£©
-©À©¤thinkphp              ¿ò¼ÜÏµÍ³Ä¿Â¼
-©¦  ©À©¤lang               ÓïÑÔ°üÄ¿Â¼
-©¦  ©À©¤library            ¿ò¼ÜºËÐÄÀà¿âÄ¿Â¼
-©¦  ©¦  ©À©¤think           Think Àà¿â°üÄ¿Â¼
-©¦  ©¦  ©¸©¤traits          ÏµÍ³ Traits Ä¿Â¼
-©¦  ©À©¤tpl                ÏµÍ³Ä£°åÄ¿Â¼
-©¦  ©À©¤.htaccess          ÓÃÓÚ apache µÄÖØÐ´
-©¦  ©À©¤.travis.yml        CI ¶¨ÒåÎÄ¼þ
-©¦  ©À©¤base.php           »ù´¡¶¨ÒåÎÄ¼þ
-©¦  ©À©¤composer.json      composer ¶¨ÒåÎÄ¼þ
-©¦  ©À©¤console.php        ¿ØÖÆÌ¨Èë¿ÚÎÄ¼þ
-©¦  ©À©¤convention.php     ¹ßÀýÅäÖÃÎÄ¼þ
-©¦  ©À©¤helper.php         ÖúÊÖº¯ÊýÎÄ¼þ£¨¿ÉÑ¡£©
-©¦  ©À©¤LICENSE.txt        ÊÚÈ¨ËµÃ÷ÎÄ¼þ
-©¦  ©À©¤phpunit.xml        µ¥Ôª²âÊÔÅäÖÃÎÄ¼þ
-©¦  ©À©¤README.md          README ÎÄ¼þ
-©¦  ©¸©¤start.php          ¿ò¼ÜÒýµ¼ÎÄ¼þ
-©À©¤build.php             ×Ô¶¯Éú³É¶¨ÒåÎÄ¼þ£¨²Î¿¼£©
-©À©¤composer.json         composer ¶¨ÒåÎÄ¼þ
-©À©¤LICENSE.txt           ÊÚÈ¨ËµÃ÷ÎÄ¼þ
-©À©¤README.md             README ÎÄ¼þ
-©À©¤think                 ÃüÁîÐÐÈë¿ÚÎÄ¼þ
+project  åº”ç”¨éƒ¨ç½²ç›®å½• test
+â”œâ”€application           åº”ç”¨ç›®å½•ï¼ˆå¯è®¾ç½®ï¼‰
+â”‚  â”œâ”€common             å…¬å…±æ¨¡å—ç›®å½•ï¼ˆå¯æ›´æ”¹ï¼‰
+â”‚  â”œâ”€index              æ¨¡å—ç›®å½•(å¯æ›´æ”¹)
+â”‚  â”‚  â”œâ”€config.php      æ¨¡å—é…ç½®æ–‡ä»¶
+â”‚  â”‚  â”œâ”€common.php      æ¨¡å—å‡½æ•°æ–‡ä»¶
+â”‚  â”‚  â”œâ”€controller      æŽ§åˆ¶å™¨ç›®å½•
+â”‚  â”‚  â”œâ”€model           æ¨¡åž‹ç›®å½•
+â”‚  â”‚  â”œâ”€view            è§†å›¾ç›®å½•
+â”‚  â”‚  â””â”€ ...            æ›´å¤šç±»åº“ç›®å½•
+â”‚  â”œâ”€command.php        å‘½ä»¤è¡Œå·¥å…·é…ç½®æ–‡ä»¶
+â”‚  â”œâ”€common.php         åº”ç”¨å…¬å…±ï¼ˆå‡½æ•°ï¼‰æ–‡ä»¶
+â”‚  â”œâ”€config.php         åº”ç”¨ï¼ˆå…¬å…±ï¼‰é…ç½®æ–‡ä»¶
+â”‚  â”œâ”€database.php       æ•°æ®åº“é…ç½®æ–‡ä»¶
+â”‚  â””â”€route.php          è·¯ç”±é…ç½®æ–‡ä»¶
+â”œâ”€extend                æ‰©å±•ç±»åº“ç›®å½•ï¼ˆå¯å®šä¹‰ï¼‰
+â”œâ”€public                WEB éƒ¨ç½²ç›®å½•ï¼ˆå¯¹å¤–è®¿é—®ç›®å½•ï¼‰
+â”‚  â”œâ”€static             é™æ€èµ„æºå­˜æ”¾ç›®å½•(css,js,image)
+â”‚  â”œâ”€index.php          åº”ç”¨å…¥å£æ–‡ä»¶
+â”‚  â”œâ”€router.php         å¿«é€Ÿæµ‹è¯•æ–‡ä»¶
+â”‚  â””â”€.htaccess          ç”¨äºŽ apache çš„é‡å†™
+â”œâ”€runtime               åº”ç”¨çš„è¿è¡Œæ—¶ç›®å½•ï¼ˆå¯å†™ï¼Œå¯è®¾ç½®ï¼‰
+â”œâ”€vendor                ç¬¬ä¸‰æ–¹ç±»åº“ç›®å½•ï¼ˆComposerï¼‰
+â”œâ”€thinkphp              æ¡†æž¶ç³»ç»Ÿç›®å½•
+â”‚  â”œâ”€lang               è¯­è¨€åŒ…ç›®å½•
+â”‚  â”œâ”€library            æ¡†æž¶æ ¸å¿ƒç±»åº“ç›®å½•
+â”‚  â”‚  â”œâ”€think           Think ç±»åº“åŒ…ç›®å½•
+â”‚  â”‚  â””â”€traits          ç³»ç»Ÿ Traits ç›®å½•
+â”‚  â”œâ”€tpl                ç³»ç»Ÿæ¨¡æ¿ç›®å½•
+â”‚  â”œâ”€.htaccess          ç”¨äºŽ apache çš„é‡å†™
+â”‚  â”œâ”€.travis.yml        CI å®šä¹‰æ–‡ä»¶
+â”‚  â”œâ”€base.php           åŸºç¡€å®šä¹‰æ–‡ä»¶
+â”‚  â”œâ”€composer.json      composer å®šä¹‰æ–‡ä»¶
+â”‚  â”œâ”€console.php        æŽ§åˆ¶å°å…¥å£æ–‡ä»¶
+â”‚  â”œâ”€convention.php     æƒ¯ä¾‹é…ç½®æ–‡ä»¶
+â”‚  â”œâ”€helper.php         åŠ©æ‰‹å‡½æ•°æ–‡ä»¶ï¼ˆå¯é€‰ï¼‰
+â”‚  â”œâ”€LICENSE.txt        æŽˆæƒè¯´æ˜Žæ–‡ä»¶
+â”‚  â”œâ”€phpunit.xml        å•å…ƒæµ‹è¯•é…ç½®æ–‡ä»¶
+â”‚  â”œâ”€README.md          README æ–‡ä»¶
+â”‚  â””â”€start.php          æ¡†æž¶å¼•å¯¼æ–‡ä»¶
+â”œâ”€build.php             è‡ªåŠ¨ç”Ÿæˆå®šä¹‰æ–‡ä»¶ï¼ˆå‚è€ƒï¼‰
+â”œâ”€composer.json         composer å®šä¹‰æ–‡ä»¶
+â”œâ”€LICENSE.txt           æŽˆæƒè¯´æ˜Žæ–‡ä»¶
+â”œâ”€README.md             README æ–‡ä»¶
+â”œâ”€think                 å‘½ä»¤è¡Œå…¥å£æ–‡ä»¶
 
 
-Ê×ÏÈ¿ËÂ¡ÏÂÔØÓ¦ÓÃÏîÄ¿²Ö¿â
+é¦–å…ˆå…‹éš†ä¸‹è½½åº”ç”¨é¡¹ç›®ä»“åº“
 git clone https://github.com/top-think/think tp5
-È»ºóÇÐ»»µ½tp5Ä¿Â¼ÏÂÃæ£¬ÔÙ¿ËÂ¡ºËÐÄ¿ò¼Ü²Ö¿â£º
+ç„¶åŽåˆ‡æ¢åˆ°tp5ç›®å½•ä¸‹é¢ï¼Œå†å…‹éš†æ ¸å¿ƒæ¡†æž¶ä»“åº“ï¼š
 git clone https://github.com/top-think/framework thinkphp
-Á½¸ö²Ö¿â¿ËÂ¡Íê³Éºó£¬¾ÍÍê³ÉÁËThinkPHP5.0µÄÏÂÔØ£¬Èç¹ûÐèÒª¸üÐÂºËÐÄ¿ò¼ÜµÄÊ±ºò£¬Ö»ÐèÒªÇÐ»»µ½thinkphpºËÐÄÄ¿Â¼ÏÂÃæ£¬È»ºóÖ´ÐÐ£º
+ä¸¤ä¸ªä»“åº“å…‹éš†å®ŒæˆåŽï¼Œå°±å®Œæˆäº†ThinkPHP5.0çš„ä¸‹è½½ï¼Œå¦‚æžœéœ€è¦æ›´æ–°æ ¸å¿ƒæ¡†æž¶çš„æ—¶å€™ï¼Œåªéœ€è¦åˆ‡æ¢åˆ°thinkphpæ ¸å¿ƒç›®å½•ä¸‹é¢ï¼Œç„¶åŽæ‰§è¡Œï¼š
 git pull https://github.com/top-think/framework
